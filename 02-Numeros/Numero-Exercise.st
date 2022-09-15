@@ -266,7 +266,7 @@ test42SignIsCorrectlyAssignedToFractionWithNegativeDivisor
 	self assert: oneHalf negated equals: (one / negativeTwo)! !
 
 
-!NumeroTest methodsFor: 'setup' stamp: 'np 9/15/2022 12:30:24'!
+!NumeroTest methodsFor: 'setup' stamp: 'NR 9/23/2018 23:46:28'!
 setUp
 
 	zero := Entero with: 0.
@@ -521,29 +521,33 @@ Entero subclass: #Cero
 	poolDictionaries: ''
 	category: 'Numero-Exercise'!
 
-!Cero methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:09:11'!
-fibonacci
-
-	^ Entero with: 1! !
-
-!Cero methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:04:56'!
+!Cero methodsFor: 'testing' stamp: 'cg 9/13/2022 14:04:56'!
 isNegative
 
 	^ false! !
 
-!Cero methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:05:02'!
+!Cero methodsFor: 'testing' stamp: 'cg 9/13/2022 14:05:02'!
 isOne
 
 	^ false! !
 
-!Cero methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:05:10'!
+!Cero methodsFor: 'testing' stamp: 'cg 9/13/2022 14:05:10'!
 isZero
 
 	^ true! !
 
-!Cero methodsFor: 'as yet unclassified' stamp: 'np 9/15/2022 12:50:42'!
-under: aDividend
-	^self error: self class canNotDivideByZeroErrorDescription! !
+
+!Cero methodsFor: 'fibonacci' stamp: 'cg 9/13/2022 14:09:11'!
+fibonacci
+
+	^ Entero with: 1! !
+
+
+!Cero methodsFor: 'initialization' stamp: 'cg 9/15/2022 15:12:08'!
+under: aNumerator
+" aNumerator / 0 "
+
+	^ self error: self class canNotDivideByZeroErrorDescription! !
 
 
 !classDefinition: #EnteroMayorAUno category: 'Numero-Exercise'!
@@ -553,7 +557,7 @@ Entero subclass: #EnteroMayorAUno
 	poolDictionaries: ''
 	category: 'Numero-Exercise'!
 
-!EnteroMayorAUno methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:18:55'!
+!EnteroMayorAUno methodsFor: 'fibonacci' stamp: 'cg 9/13/2022 14:18:55'!
 fibonacci
 
 	| one two |
@@ -563,36 +567,28 @@ fibonacci
 
 	^ (self - one) fibonacci + (self - two) fibonacci! !
 
-!EnteroMayorAUno methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:05:53'!
+
+!EnteroMayorAUno methodsFor: 'testing' stamp: 'cg 9/13/2022 14:05:53'!
 isNegative
 
 	^ false! !
 
-!EnteroMayorAUno methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:18:04'!
+!EnteroMayorAUno methodsFor: 'testing' stamp: 'cg 9/13/2022 14:18:04'!
 isOne
 
 	^ false! !
 
-!EnteroMayorAUno methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:05:57'!
+!EnteroMayorAUno methodsFor: 'testing' stamp: 'cg 9/13/2022 14:05:57'!
 isZero
 
 	^ false! !
 
-!EnteroMayorAUno methodsFor: 'as yet unclassified' stamp: 'np 9/15/2022 12:55:47'!
-over: aNumerator
-	
-	^Fraccion new initializeWith: aNumerator over: self.! !
 
-!EnteroMayorAUno methodsFor: 'as yet unclassified' stamp: 'np 9/15/2022 12:55:47'!
-under: aDividend
-	"aDividend/self"
-	|greatestCommonDivisor numerator denominator|
-	greatestCommonDivisor := aDividend greatestCommonDivisorWith: self. 
-	numerator := aDividend // greatestCommonDivisor.
-	denominator := self // greatestCommonDivisor.
-	
-	^denominator over:numerator.
-! !
+!EnteroMayorAUno methodsFor: 'initialization' stamp: 'cg 9/15/2022 15:13:05'!
+under: aNumerator
+" aNumerator / self "
+
+	^ Fraccion new initializeWith: aNumerator over: self! !
 
 
 !classDefinition: #EnteroNegativo category: 'Numero-Exercise'!
@@ -602,29 +598,33 @@ Entero subclass: #EnteroNegativo
 	poolDictionaries: ''
 	category: 'Numero-Exercise'!
 
-!EnteroNegativo methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:08:21'!
-fibonacci
-
-	self error: Entero negativeFibonacciErrorDescription! !
-
-!EnteroNegativo methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:05:25'!
+!EnteroNegativo methodsFor: 'testing' stamp: 'cg 9/13/2022 14:05:25'!
 isNegative
 
 	^ true! !
 
-!EnteroNegativo methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:05:34'!
+!EnteroNegativo methodsFor: 'testing' stamp: 'cg 9/13/2022 14:05:34'!
 isOne
 
 	^ false! !
 
-!EnteroNegativo methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:05:39'!
+!EnteroNegativo methodsFor: 'testing' stamp: 'cg 9/13/2022 14:05:39'!
 isZero
 
 	^ false! !
 
-!EnteroNegativo methodsFor: 'as yet unclassified' stamp: 'np 9/15/2022 12:50:21'!
-under: aDividend
-	^aDividend negated / self negated! !
+
+!EnteroNegativo methodsFor: 'fibonacci' stamp: 'cg 9/13/2022 14:08:21'!
+fibonacci
+
+	self error: Entero negativeFibonacciErrorDescription! !
+
+
+!EnteroNegativo methodsFor: 'initialization' stamp: 'cg 9/15/2022 15:13:48'!
+under: aNumerator
+" aNumerator / self "
+
+	^ self negated under: aNumerator negated! !
 
 
 !classDefinition: #Uno category: 'Numero-Exercise'!
@@ -634,34 +634,33 @@ Entero subclass: #Uno
 	poolDictionaries: ''
 	category: 'Numero-Exercise'!
 
-!Uno methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:18:43'!
+!Uno methodsFor: 'fibonacci' stamp: 'cg 9/13/2022 14:18:43'!
 fibonacci
 
 	^ Entero with: 1! !
 
-!Uno methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:18:26'!
+
+!Uno methodsFor: 'testing' stamp: 'cg 9/13/2022 14:18:26'!
 isNegative
 
 	^ false! !
 
-!Uno methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:18:19'!
+!Uno methodsFor: 'testing' stamp: 'cg 9/13/2022 14:18:19'!
 isOne
 
 	^ true! !
 
-!Uno methodsFor: 'as yet unclassified' stamp: 'cg 9/13/2022 14:18:30'!
+!Uno methodsFor: 'testing' stamp: 'cg 9/13/2022 14:18:30'!
 isZero
 
 	^ false! !
 
-!Uno methodsFor: 'as yet unclassified' stamp: 'np 9/15/2022 12:56:37'!
-over: aDividend
-	 ^aDividend
-! !
 
-!Uno methodsFor: 'as yet unclassified' stamp: 'np 9/15/2022 12:50:34'!
-under: aDividend
-	^aDividend! !
+!Uno methodsFor: 'initialization' stamp: 'cg 9/15/2022 15:11:30'!
+under: aNumerator
+" aNumerator / 1 "
+
+	^ aNumerator! !
 
 
 !classDefinition: #Fraccion category: 'Numero-Exercise'!
@@ -809,8 +808,13 @@ printOn: aStream
 Fraccion class
 	instanceVariableNames: ''!
 
-!Fraccion class methodsFor: 'intance creation' stamp: 'np 9/15/2022 12:54:02'!
+!Fraccion class methodsFor: 'intance creation' stamp: 'cg 9/15/2022 15:10:49'!
 with: aDividend over: aDivisor
 
-	^aDivisor under: aDividend
-	! !
+	| greatestCommonDivisor numerator denominator |
+	
+	greatestCommonDivisor := aDividend greatestCommonDivisorWith: aDivisor. 
+	numerator := aDividend // greatestCommonDivisor.
+	denominator := aDivisor // greatestCommonDivisor.
+
+	^ denominator under: numerator! !
